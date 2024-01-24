@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "discord-updater"
+version = "0.1.0"
+description = ""
+authors = ["Midhun Pradeep Nair <52858999+midhunpradeep@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
