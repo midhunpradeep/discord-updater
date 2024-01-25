@@ -9,7 +9,7 @@ from pathlib import Path
 import requests
 
 CONFIG = {
-    "LOG_DIRECTORY": "logs",
+    "LOG_DIRECTORY": "/home/midhun/Projects/misc/discord-updater/discord_updater/logs",
     "LOGFILE_EXTENSION": ".log.txt",
     "LOGFILE_LIMIT": 5,
     "DOWNLOAD_CHUCK_SIZE_MiB": 10,
@@ -92,6 +92,9 @@ def main():
                 f"discord-updater-{start_timestamp.strftime('%y-%m-%d-%H-%M-%S')}{CONFIG['LOGFILE_EXTENSION']}")).resolve()
         ),
         filemode="w",
+        style="{",
+        format='[{asctime}:{msecs:.0f}][{levelname}]: {message}',
+        datefmt='%H:%M:%S',
         level=logging.INFO
     )
     logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
@@ -134,7 +137,8 @@ def main():
         logging.info("Searching for old logs")
         remove_old_logs()
         logging.info("Done searching for old logs")
-        logging.info(f"Process ended at {datetime.now()}")
+        end_timestamp = datetime.now()
+        logging.info(f"Process ended at {end_timestamp} (Duration: {end_timestamp - start_timestamp})")
 
 
 if __name__ == '__main__':
